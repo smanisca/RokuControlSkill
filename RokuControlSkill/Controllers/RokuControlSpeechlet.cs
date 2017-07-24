@@ -105,6 +105,7 @@ namespace RokuControlSkill.Controllers
             // prompt the user for input            
             return await BuildSpeechletResponse("Open App", speechOutput, false);
         }
+
         private async Task<SpeechletResponse> GetWelcomeResponse()
         {
             // Create the welcome message.
@@ -121,7 +122,7 @@ namespace RokuControlSkill.Controllers
             var card = new StandardCard();
             card.Title = String.Format("RokuControl - {0}", title);
             card.Text = String.Format("{0}", output);
-            var image = new Image() { SmallImageUrl = "https://samman.hopto.org/roku.png" };
+            var image = new Image() { SmallImageUrl = "https://samman.hopto.org/rokusmall.png", LargeImageUrl = "https://samman.hopto.org/rokubig.png" };
             card.Image = image;
 
             // Create the plain text output.
