@@ -119,21 +119,33 @@ namespace RokuControlSkill.Controllers
         private async Task<SpeechletResponse> BuildSpeechletResponse(string title, string output, bool shouldEndSession)
         {
             //Create a standard card
-            var card = new StandardCard();
-            card.Title = String.Format("RokuControl - {0}", title);
-            card.Text = String.Format("{0}", output);
-            var image = new Image() { SmallImageUrl = "https://samman.hopto.org/rokusmall.png", LargeImageUrl = "https://samman.hopto.org/rokubig.png" };
-            card.Image = image;
+            var image = new Image()
+            {
+                SmallImageUrl = "https://samman.hopto.org/rokusmall.png",
+                LargeImageUrl = "https://samman.hopto.org/rokubig.png"
+            };
 
+            var card = new StandardCard()
+            {
+                Title = String.Format("RokuControl - {0}", title),
+                Text = String.Format("{0}", output),
+                Image = image
+            };
+           
             // Create the plain text output.
-            var speech = new PlainTextOutputSpeech();
-            speech.Text = output;
+            var speech = new PlainTextOutputSpeech()
+            {
+                Text = output
+            };
 
             // Create the speechlet response.
-            var response = new SpeechletResponse();
-            response.ShouldEndSession = shouldEndSession;
-            response.OutputSpeech = speech;
-            response.Card = card;
+            var response = new SpeechletResponse()
+            {
+                ShouldEndSession = shouldEndSession,
+                OutputSpeech = speech,
+                Card = card
+            };
+
             return response;
         }
     }
